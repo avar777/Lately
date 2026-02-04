@@ -18,14 +18,14 @@ I wanted a personal photo journal I could share with friends and family without 
 
 ## What I Built
 
-**Lately** is a personal photo journal with public viewing—like a combination of Pinterest and a private Instagram. Deployed at **[avaraper.com](https://avaraper.com)** using AWS CloudFront and a custom SSL certificate.
+**Lately** is a personal photo journal with public viewing like a combination of Pinterest and a private Instagram. Deployed at **[avaraper.com](https://avaraper.com)** using AWS CloudFront and a custom SSL certificate.
 
 **The concept:**
 - **I'm the only one who can upload photos** (password-protected admin access)
 - **Anyone can view, like, and comment** (anonymous public access)
 - **Only I can delete content** (photos and comments require password)
 
-Think of it as a shareable photo diary where friends and family can see what I'm up to, react, and leave comments. n
+Think of it as a shareable photo diary where friends and family can see what I'm up to, react, and leave comments.
 
 **Features:**
 - Password-protected uploads and deletions (admin-only)
