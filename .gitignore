@@ -1,0 +1,13 @@
+# Lambda functions with passwords
+backend/
+lambda_function.py
+
+# AWS credentials
+.aws/
+credentials
+
+# Environment variables
+.env
+
+# System files
+.DS_Store

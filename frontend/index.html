@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lately</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <h1 class="title">Lately</h1>
+        <button class="upload-btn" onclick="checkPassword()">+</button>
+    </header>
+
+    <main class="container">
+        <div class="grid" id="photoGrid"></div>
+        
+        <div class="loading" id="loading">
+            <div class="loading-spinner"></div>
+        </div>
+        
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <p>No photos yet</p>
+        </div>
+    </main>
+
+    <div class="modal" id="uploadModal">
+        <div class="modal-overlay" onclick="closeUploadModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeUploadModal()">×</button>
+            <h2>Upload Photo</h2>
+            
+            <div class="upload-area" id="uploadArea">
+                <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="handleFileSelect(event)">
+                <div class="upload-placeholder" id="uploadPlaceholder" onclick="document.getElementById('fileInput').click()">
+                    <div class="upload-icon-large">+</div>
+                    <p>Click to choose a photo</p>
+                </div>
+                <img id="previewImage" style="display: none;" class="preview-image">
+            </div>
+            
+            <div class="form-group">
+                <input type="text" id="captionInput" placeholder="Add a caption (optional)">
+            </div>
+            
+            <button class="btn-primary" onclick="uploadPhoto()" id="uploadButton">Upload</button>
+        </div>
+    </div>
+
+    <div class="modal" id="photoModal">
+        <div class="modal-overlay" onclick="closePhotoModal()"></div>
+        <div class="modal-content modal-photo">
+            <button class="modal-close" onclick="closePhotoModal()">×</button>
+            <button class="delete-photo-btn" onclick="deletePhoto()" title="Delete photo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    <line x1="10" y1="11" x2="10" y2="17"></line>
+                    <line x1="14" y1="11" x2="14" y2="17"></line>
+                </svg>
+            </button>
+            <div class="photo-detail">
+                <img id="modalImage" src="" alt="">
+                <div class="photo-info">
+                    <p class="photo-caption" id="modalCaption"></p>
+                    <p class="photo-date" id="modalDate"></p>
+                    
+                    <div class="photo-actions">
+                        <button class="action-btn like-btn" onclick="likePhoto()" id="likeButton">
+                            <span id="likeIcon">♡</span>
+                            <span class="like-count" id="likeCount">0</span>
+                        </button>
+                        <button class="action-btn comment-btn" onclick="openCommentInput()">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="comments-section">
+                        <div class="comments-list" id="commentsList"></div>
+                        
+                        <div class="comment-form" id="commentForm" style="display: none;">
+                            <textarea id="commentInput" placeholder="Add a comment..." rows="2"></textarea>
+                            <div class="comment-buttons">
+                                <button class="btn-secondary" onclick="cancelComment()">Cancel</button>
+                                <button class="btn-primary" onclick="addComment()">Post</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
